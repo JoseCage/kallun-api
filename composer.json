@@ -9,8 +9,10 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
+        "predis/predis": "^1.1",
         "ramsey/uuid": "^3.8",
-        "ramsey/uuid-console": "^1.1"
+        "ramsey/uuid-console": "^1.1",
+        "tymon/jwt-auth": "^0.5.12"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
