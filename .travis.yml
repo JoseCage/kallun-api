@@ -1,0 +1,30 @@
+language: php
+php:
+- 7.0
+- 7.1
+- nightly
+sudo: false
+dist: trusty
+notifications:
+  slack:
+    secure: bSOG8ykNlWWL0/zxa74oSlGNGtgLG6CvJugJ+ODYuhbAEbURoCbON+BLOVDbliT3pt2PRfOkPzuoDsiBDyv58Q+mFWIpCtMWZoA26OnfTSY3gigze9NYwNvKLGic6gGZiRJOhVjlB26H8phxQEc3ApNlu5S4Ry6REt2aeQ45V4tWwBTXsJBKnCdeuZW1jvXP0uoy3yP3tWTUarCJSEDs83NmPwdxzcNvbsjDYZIDciaFd1VmoBXD0wdAnKbK399K5bscLulbp+HpoMint1G8Uv2zs6OixjPBj+MouRjsLPT51zrybr73ZVhLxcQxhJIRCR1mDYstTWKu29TMxIjclP6efhAc32l3sp4aR2DSk1ROSINcoqttyL9EJ+55LbIgwJUPYrZQc2y3SnNI0V9Ju8w/2V9TWN0pCGtloGC63Bp02/c4r+QVTD/Mcb5fXAmNGJsBzzDbLNu5A3P7HSIzirs/tVAoZz6FyFFsaSz+1GXdkOe2uCTrKFRiJ2Ew0U3VApK/K3E8+hdJ11N7ilNNkvQASchjwc86R2i8acVomtKpqQ60JZ8Ak8WMvmyoZ6vsghG5ivmX2w/uPG1iNV08szRlzbAYm52YCYUWwHZ7ZwHzNTX9pXQezWPjuz8njtEKrpTrxjXsZJOYNnWSs0jskNF86TvuCVOUqa/C/3JE/OA=
+addons:
+  postgresql: '9.6'
+  code_climate:
+    repo_token: "$CODECLIMATE_REPO_TOKEN"
+services:
+- postgresql
+cache:
+  directories:
+  - node_modules/
+  - "~/.composer/cache"
+install: composer install
+before_script:
+- psql -C 'create database kallun;' -U postgres
+- composer require codeclimate/php-test-reporter --dev
+script:
+- php artisan migrate --env=testing --no-interaction
+- vendor/bin/phpunit
+- sh ./cache-clean.sh
+after_success:
+- "./codeclimate.sh"
