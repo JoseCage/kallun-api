@@ -28,7 +28,7 @@ install: composer install
 
 before_script:
   - psql -c 'create database kallun;' -U postgres
-  - composer require codeclimate/php-test-reporter --dev
+#  - composer require codeclimate/php-test-reporter --dev
 
 script:
   - php artisan migrate --env=testing --no-interaction
