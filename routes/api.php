@@ -25,6 +25,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
     // Slangs
     Route::group(['prefix' => 'slangs'], function($slang) {
         $slang->post('/', 'SlangsController@createSlang');
+        $slang->get('/', 'SlangsController@getAllSlangs');
         $slang->get('/{slang}', 'SlangsController@slangDetails');
     });
 
