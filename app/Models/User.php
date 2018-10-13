@@ -5,10 +5,11 @@ namespace Kallun\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Kallun\Traits\UuidTrait as Uuids;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Uuids;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'phone', 'avatar', 'password',
     ];
 
     /**
@@ -25,6 +26,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'phone', 'password', 'remember_token',
     ];
 }

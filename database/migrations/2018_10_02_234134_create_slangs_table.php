@@ -14,7 +14,11 @@ class CreateSlangsTable extends Migration
     public function up()
     {
         Schema::create('slangs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
+            $table->string('name');
+            $table->string('meaning');
+            $table->text('description');
+            $table->text('example');
             $table->timestamps();
         });
     }

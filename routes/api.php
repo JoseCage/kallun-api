@@ -13,6 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
+
+    // Authentication Routes
+    Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function($auth) {
+        $auth->post('/login', 'AuthenticateController@login')->name('login');
+        $auth->post('/register', 'AuthenticateController@register')->name('register');
+    });
+
+    // Slangs
+    Route::group(['prefix' => 'slangs'], function($slang) {
+        $slang->post('/', 'SlangsController@createSlang');
+        $slang->get('/', 'SlangsController@getAllSlangs');
+        $slang->get('/{slang}', 'SlangsController@slangDetails');
+    });
+
 });
