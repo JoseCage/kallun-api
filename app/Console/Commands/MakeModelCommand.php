@@ -21,13 +21,13 @@ class MakeModelCommand extends ModelMakeCommand
      */
     protected $description = 'Create a new model class with Models namespace';
 
-
     protected function getPath($name)
     {
         $name = str_replace_first($this->rootNamespace(), '', $name);
 
-        return $this->laravel[ 'path' ].'/Models/'.str_replace('\\', '/', $name).'.php';
+        return $this->laravel['path'].'/Models/'.str_replace('\\', '/', $name).'.php';
     }
+
     /**
      * Get the root namespace for the class.
      *
@@ -43,10 +43,10 @@ class MakeModelCommand extends ModelMakeCommand
      *
      * @return void
      *
-    public function __construct()
-    {
-        parent::__construct();
-    }
+     * public function __construct()
+     * {
+     * parent::__construct();
+     * }
      */
 
     /**
@@ -54,9 +54,9 @@ class MakeModelCommand extends ModelMakeCommand
      *
      * @return mixed
      *
-    public function handle()
-    {
-        //
-    }
+     * public function handle()
+     * {
+     * //
+     * }
      */
 }

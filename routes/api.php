@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,20 +11,18 @@ use Illuminate\Http\Request;
 |
 */
 
-
-Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
+Route::group(['prefix' => 'v1', 'namespace' => 'API'], function () {
 
     // Authentication Routes
-    Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function($auth) {
+    Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function ($auth) {
         $auth->post('/login', 'AuthenticateController@login')->name('login');
         $auth->post('/register', 'AuthenticateController@register')->name('register');
     });
 
     // Slangs
-    Route::group(['prefix' => 'slangs'], function($slang) {
+    Route::group(['prefix' => 'slangs'], function ($slang) {
         $slang->post('/', 'SlangsController@createSlang');
         $slang->get('/', 'SlangsController@getAllSlangs');
         $slang->get('/{slang}', 'SlangsController@slangDetails');
     });
-
 });
