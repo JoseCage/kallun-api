@@ -2,7 +2,6 @@
 
 namespace Kallun\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 use Kallun\Http\Controllers\Controller;
 use Kallun\Http\Resources\SlangCollection as Slangs;
 use Kallun\Models\Slang;

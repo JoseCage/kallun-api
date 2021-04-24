@@ -9,12 +9,11 @@ use Ramsey\Uuid\Uuid;
  */
 trait UuidTrait
 {
-
     protected static function boot()
     {
         parent::boot();
 
-        static::creating(function($model) {
+        static::creating(function ($model) {
             $model->{$model->getKeyNme()} = Uuid::uuid4()->toString();
         });
     }

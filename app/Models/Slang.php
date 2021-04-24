@@ -15,6 +15,6 @@ class Slang extends Model
      * @var array
      */
     protected $filliable = [
-        'name', 'meaning', 'example', 'description'
+        'name', 'meaning', 'example', 'description',
     ];
 }
